@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Log Explorer",
+  "version": "0.1.0",
+  "description": "Automatically explore timestamped logs and structured log JSON in the browser.",
+  "action": {
+    "default_popup": "index.html?popup=1"
+  },
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["index.html", "assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline' https://assets.ubuntu.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
+  }
+}
